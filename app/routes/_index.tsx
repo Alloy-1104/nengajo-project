@@ -26,7 +26,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       headers: { "Set-Cookie": await commitSession(session) },
     })
   }
-  return { error: true, msg: "異なる郵便番号" }
+  return { error: true, msg: "郵便番号が違います。" }
 }
 
 // export const action = async ({}) => {
@@ -101,7 +101,7 @@ export default function Login() {
         onSubmit={handleSubmit}
       >
         <label className="block text-center" htmlFor="post_code-input">
-          郵便番号を入力してください
+          服部自宅の郵便番号を入力してください。
         </label>
         <div>
           <input
