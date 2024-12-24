@@ -9,10 +9,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     session.set("verified", false)
     const NAME = process.env.NAME || "名前"
     const TEL = process.env.TEL || "電話番号"
+    const EMAIL = process.env.EMAIL || "example@info.com"
     const LINE_URL = process.env.LINE_URL || "LINEのURL"
     const FACEBOOK_URL = process.env.FACEBOOK_URL || "FacebookのURL"
     return json(
-      { NAME, TEL, LINE_URL, FACEBOOK_URL },
+      { NAME, TEL, EMAIL, LINE_URL, FACEBOOK_URL },
       {
         headers: { "Set-Cookie": await commitSession(session) },
       }
@@ -22,12 +23,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 }
 
 export default function Info() {
-  const { NAME, TEL, LINE_URL, FACEBOOK_URL } = useLoaderData<typeof loader>()
+  const { NAME, TEL, EMAIL, LINE_URL, FACEBOOK_URL } =
+    useLoaderData<typeof loader>()
   return (
     <>
       <div className="flex flex-col gap-2 w-4/5">
         <div className="px-2 text-2xl">{NAME}</div>
         <div className="px-2 text-xl">{TEL}</div>
+        <div className="px-2 text-xl">{EMAIL}</div>
         <a className="flex flex-row h-12 items-center" href={LINE_URL}>
           <svg
             className="size-12"

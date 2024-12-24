@@ -96,16 +96,22 @@ export default function Login() {
   return (
     <div>
       <Form
-        className="flex flex-col items-center justify-start gap-4 relative h-64"
+        className="flex flex-col items-center justify-start gap-4 relative h-64 max-w-72"
         method="POST"
         onSubmit={handleSubmit}
       >
-        <label className="block text-center" htmlFor="post_code-input">
-          服部自宅の郵便番号を入力してください。
+        <label className="block text-left" htmlFor="post_code-input">
+          <p>アクセスありがとうございます。</p>
+          <p>
+            <span className="inline-block">個人情報のためパスワード入力の</span>
+            <span className="inline-block">ご協力をお願いいたします。</span>
+          </p>
+          <br />
+          <p>パスワード：服部自宅の郵便番号</p>
         </label>
-        <div>
+        <div className="w-full">
           <input
-            className="block text-center border p-4 tracking-widest font-code"
+            className="block text-center border p-4 tracking-widest font-code w-full"
             onChange={handleChange}
             id="post_code-input"
             name="post_code"
